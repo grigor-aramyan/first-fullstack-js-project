@@ -44,13 +44,12 @@ server.get('/', (req, res) => {
 });
 
 mongoose.connect(DB_URI, { useNewUrlParser: true }, function(err) {
-  if (err) console.log(err);
+  if (err) return console.log(err);
 
   server.listen(PORT, () => console.log(`Server listening on port ${PORT}...`));
 });
 
 process.on('SIGINT', () => {
-  console.log('clearing...');
   mongoose.disconnect();
   process.exit();
 });
