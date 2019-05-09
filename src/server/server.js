@@ -3,10 +3,14 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import App from '../components/App';
 
+import userRoutes from './routes/userRoutes';
+
 const server = express();
 server.use(express.static('dist'));
 
 const PORT = 4242;
+
+server.use('/users', userRoutes);
 
 server.get('/', (req, res) => {
   const initialMarkup = ReactDOMServer.renderToString(<App />);
