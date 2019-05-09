@@ -1,14 +1,17 @@
 import express from 'express';
+import mongoose from 'mongoose';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import App from '../components/App';
 
+// ROUTES
 import userRoutes from './routes/userRoutes';
 
 const server = express();
 server.use(express.static('dist'));
 
 const PORT = 4242;
+const DB_URI = 'mongodb://127.0.0.1:27017/myfirstdb';
 
 server.use('/users', userRoutes);
 
@@ -40,4 +43,14 @@ server.get('/', (req, res) => {
   `);
 });
 
-server.listen(PORT, () => console.log(`Server listening on port ${PORT}...`));
+mongoose.connect(DB_URI, { useNewUrlParser: true }, function(err) {
+  if (err) console.log(err);
+
+  server.listen(PORT, () => console.log(`Server listening on port ${PORT}...`));
+});
+
+process.on('SIGINT', () => {
+  console.log('clearing...');
+  mongoose.disconnect();
+  process.exit();
+});
