@@ -7,7 +7,7 @@ export default function Header() {
   };
 
   return (
-    <div>
+    <div className="mb-3">
       <img src="images/header.jpg" alt="Company header" width="100%" />
       <nav className="navbar navbar-expand-md" style={styles}>
         <a className="navbar-brand" href="/">
