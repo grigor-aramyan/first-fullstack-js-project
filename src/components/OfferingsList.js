@@ -10,8 +10,11 @@ export default class OfferingsList extends Component {
 
     render() {
         return (
-            <div className="row justify-content-center">
-                {mockOfferings.MockList.map(item => <OfferingsListItem data={item} key={item.id} />)}
+            <div>
+                <h3 style={{textAlign: "center"}}>Top Offerings</h3>
+                <div className="row justify-content-center">
+                    {mockOfferings.MockList.map(item => <OfferingsListItem data={item} key={item.id} />)}
+                </div>
             </div>
         );
     }

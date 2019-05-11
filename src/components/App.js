@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import OfferingsList from './OfferingsList';
+import IntroInfo from './IntroInfo';
 
 export default class App extends Component {
   constructor() {
@@ -17,6 +18,7 @@ export default class App extends Component {
       <div>
         <Header />
         <div className="container">
+          <IntroInfo />
           <OfferingsList />
         </div>
       </div>
