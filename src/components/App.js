@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
+import Header from './Header';
 
-export default function App() {
-  const [count, setCount] = useState(0);
+export default class App extends Component {
+  constructor() {
+    super();
+    this.state = { inputV: '' };
+  }
 
-  return (
-    <div className="container">
-      My sample react app.
-      <br /><br />
-      <button className="btn btn-primary" onClick={() => setCount(count + 1)}>
-        +
-      </button>
-      <br />
-      {count}
-      <br />
-      <button onClick={() => setCount(count - 1)}>
-        -
-      </button>
-    </div>
-  );
+  onChange = (e) => {
+    this.setState({ inputV: e.target.value });
+  }
+
+  render() {
+    return (
+      <div>
+        <Header />
+        <div className="container">
+          some text in container
+        </div>
+      </div>
+    );
+  }
 }
