@@ -2,6 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom';
+
 import App from '../components/App';
 
 // ROUTES
@@ -15,8 +17,12 @@ const DB_URI = 'mongodb://127.0.0.1:27017/myfirstdb';
 
 server.use('/users', userRoutes);
 
-server.get('/', (req, res) => {
-  const initialMarkup = ReactDOMServer.renderToString(<App />);
+server.get('/*', (req, res) => {
+  const initialMarkup = ReactDOMServer.renderToString(
+    <StaticRouter location={req.url} context={{}}>
+      <App />
+    </StaticRouter>
+    );
 
   res.send(`
     <html>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   const styles = {
@@ -15,7 +16,7 @@ export default function Header() {
         </a>
         <ul className="navbar-nav" style={{marginLeft: 'auto'}}>
           <li className="nav-item">
-            <a className="nav-link" href="#">Home</a>
+            <a className="nav-link" href="/">Home</a>
           </li>
 
           <li className="nav-item dropdown">
@@ -32,10 +33,10 @@ export default function Header() {
           </li>
 
           <li className="nav-item">
-            <a className="nav-link" href="#">About Us</a>
+            <a className="nav-link" href="about">About Us</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link">Log In</a>
+            <a className="nav-link" href="#">Log In</a>
           </li>
         </ul>
       </nav>
