@@ -23,7 +23,12 @@ router.post('/create', jsonParser, function(req, res) {
 });
 
 router.get('/', function(req, res) {
-  res.send('index of users path');
+  //res.send('index of users path');
+
+  res.json({
+    firstname: "test first name",
+    secondname: "test second name"
+  });
 });
 
 router.get('/:userId', function(req, res) {
