@@ -8,6 +8,7 @@ import App from '../components/App';
 
 // ROUTES
 import userRoutes from './routes/userRoutes';
+import Auth from '../auth/Auth';
 
 const server = express();
 server.use(express.static('dist'));
@@ -18,16 +19,18 @@ const DB_URI = 'mongodb://127.0.0.1:27017/myfirstdb';
 server.use('/users', userRoutes);
 
 server.get('/*', (req, res) => {
+  const auth = new Auth();
+
   const initialMarkup = ReactDOMServer.renderToString(
     <StaticRouter location={req.url} context={{}}>
-      <App />
+      <App auth={auth} />
     </StaticRouter>
     );
 
   res.send(`
     <html>
       <head>
-        <title>Sample app title</title>
+        <title>Hostel Booking</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
           crossorigin="anonymous">

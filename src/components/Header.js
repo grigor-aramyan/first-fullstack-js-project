@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-export default function Header() {
+export default function Header(props) {
   const styles = {
     border: '1px solid grey',
     borderRadius: '1em'
   };
+
+  const { isAuthenticated } = props.auth;
 
   return (
     <div className="mb-3">
@@ -35,9 +36,21 @@ export default function Header() {
           <li className="nav-item">
             <a className="nav-link" href="about">About Us</a>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">Log In</a>
-          </li>
+          {isAuthenticated() &&
+            <li className="nav-item">
+              <a className="nav-link" href="#" onClick={() => location.replace('/dashboard')}>Dashboard</a>
+            </li>
+          }
+          {!isAuthenticated() &&
+            <li className="nav-item">
+              <a className="nav-link" href="#" onClick={props.auth.login}>Log In</a>
+            </li>
+          }
+          {isAuthenticated() &&
+            <li className="nav-item">
+              <a className="nav-link" href="#" onClick={props.auth.logout}>Log Out</a>
+            </li>
+          }
         </ul>
       </nav>
     </div>

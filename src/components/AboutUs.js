@@ -2,10 +2,10 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 
-export default function AboutUs() {
+export default function AboutUs(props) {
     return(
         <div>
-            <Header />
+            <Header auth={props.auth} />
             <div className="container">
             <h2>Who we are?</h2>
             <h6 className="mr-2" style={{textAlign: "right"}}><i>And what we are doing?</i></h6>

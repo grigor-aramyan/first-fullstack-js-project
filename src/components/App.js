@@ -6,9 +6,9 @@ import IntroInfo from './IntroInfo';
 import Footer from './Footer';
 
 export default class App extends Component {
-  constructor() {
-    super();
-    this.state = { inputV: '' };
+  constructor(props) {
+    super(props);
+  
   }
 
   componentDidMount() {
@@ -24,14 +24,11 @@ export default class App extends Component {
       });
   }
 
-  onChange = (e) => {
-    this.setState({ inputV: e.target.value });
-  }
-
   render() {
+    
     return (
       <div>
-        <Header />
+        <Header auth={this.props.auth} />
         <div className="container">
           <IntroInfo />
           <OfferingsList />
